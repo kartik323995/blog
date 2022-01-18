@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+{%block dp%}
+    <div class="post">
+            <h1>{{post.title}}</h1>
+            {% if post.author == user %}
+                <a class="post-user" href="{% url 'update-post' post.pk %}"> Update</a>
+                <a class="post-user" href="{% url 'delete-post' post.pk %}"> Delete</a>
+            {% endif %}
+            <p class="padd">{{post.description|linebreaksbr}}</p>
+            <small class="padd" >  
+                <a class="author" href="{% url 'user-post' post.author %}"> {{post.author}}  </a>  
+            </small>  
+            <small class="">{{post.date|date:"d F, y"}}</small>
+        </div>
+{%endblock dp%}
